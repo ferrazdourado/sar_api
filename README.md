@@ -1,86 +1,170 @@
-# Serpro SAR API
+# 🔐 Serpro SAR API
 
-Este é um projeto um sistema de Api Rest em Golang, cujo objetivo é servir como backend ao sistema de gestão do sistema de acesso remoto.
-O projeto utiliza como framework o Gin com linguagem Golang versão 1.23 e possui autenticação JWT
+<p align="center">
+  <img src="docs/images/logo.png" alt="Serpro SAR API Logo" width="200"/>
+</p>
 
-## 🛠️ Tecnologias Utilizadas
+## 📋 Sobre o Projeto
 
-- Golang 1.23
-- Dart 3.x
-- Autenticação JWT
-- MongoDB
+O Serpro SAR API é um sistema backend robusto desenvolvido em Go, projetado para gerenciar o sistema de acesso remoto do Serpro. Esta API RESTful oferece uma interface segura e escalável para gerenciamento de conexões VPN e autenticação de usuários.
 
-## Controladores
-Estes arquivos seguem as melhores práticas de desenvolvimento em Go:
+## 🚀 Principais Funcionalidades
 
-- Utilizam injeção de dependência
-- Seguem o princípio da responsabilidade única
-- São testáveis através de mocks
-- Incluem tratamento de erros apropriado
-- Utilizam interfaces para desacoplamento
+- ✅ Gerenciamento de conexões VPN
+- 🔐 Autenticação JWT
+- 👥 Controle de usuários
+- 📊 Monitoramento de status
+- 📝 Logs de atividades
 
-## Rotas
-Este código segue as melhores práticas:
+## 🛠️ Tecnologias
 
-- Organização em grupos lógicos de rotas
-- Versionamento da API (/api/v1)
-- Separação entre rotas públicas e protegidas
-- Injeção de dependências
-- Testes unitários
-- Middleware de autenticação aplicado apenas às rotas necessárias
+| Tecnologia | Versão | Descrição |
+|------------|---------|-----------|
+| Go | 1.23 | Linguagem principal |
+| Gin | v1.9.1 | Framework web |
+| MongoDB | 6.0 | Banco de dados |
+| JWT | - | Autenticação |
+| Docker | - | Containerização |
 
-## Modelos
-Estes models incluem:
+## 🏗️ Arquitetura
 
-- Tags para serialização JSON e BSON (MongoDB)
-- Validações usando o pacote binding
-- Campos de auditoria (CreatedAt, UpdatedAt)
-- Tipos adequados para cada campo
-- Estruturas para autenticação
-- Estruturas de resposta padronizadas
-- Suporte a paginação
-
-## Repositório
-Principais características desta implementação:
-
-- Suporte a transações MongoDB
-- Paginação eficiente
-- Índices adequados
-- Tratamento de erros robusto
-- Testes de integração
-- Timestamps automáticos
-- Interface fluente e limpa
-
-## Services
-Estes serviços implementam:
-
-- Autenticação com JWT
-- Hash seguro de senhas
-- Validação de dados
-- Paginação
-- Tratamento de erros
-- Testes unitários com mocks
-- Injeção de dependências
-
-## Como inicializar
-```console
-# Na raiz do projeto (./sar_api)
-
-# Inicializar o módulo Go (se ainda não existir)
-go mod init github.com/ferrazdourado/sar_api
-
-# Instalar dependências
-go get -u github.com/gin-gonic/gin
-go get -u go.mongodb.org/mongo-driver/mongo
-go get -u github.com/golang-jwt/jwt
-go get -u github.com/spf13/viper
-
-# Gerar o arquivo go.sum
-go mod tidy
-
-# Iniciar os containers
-docker-compose up -d
-
-# Ver os logs
-docker-compose logs -f
+```plaintext
+sar_api/
+├── cmd/
+│   └── api/
+│       └── main.go          # Ponto de entrada
+├── internal/
+│   ├── controllers/         # Handlers HTTP
+│   ├── middleware/          # Middlewares
+│   ├── models/             # Estruturas de dados
+│   ├── repository/         # Camada de dados
+│   ├── routes/            # Definição de rotas
+│   └── services/          # Lógica de negócios
+├── pkg/
+│   ├── config/            # Configurações
+│   └── utils/             # Utilitários
+└── tests/                 # Testes
 ```
+
+## 🛠️ Instalação
+
+### Pré-requisitos
+
+- Go 1.23+
+- Docker
+- Docker Compose
+- Make (opcional)
+
+### Configuração
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/seu-usuario/sar_api.git
+cd sar_api
+```
+
+2. Configure as variáveis de ambiente:
+```bash
+cp .env.example .env
+```
+
+3. Ajuste o arquivo de configuração:
+```yaml
+# config/config.yaml
+server:
+  port: 8080
+  mode: "debug"
+
+database:
+  uri: "mongodb://localhost:27017"
+  database: "sar_db"
+```
+
+### 🚀 Execução
+
+**Com Docker:**
+```bash
+docker-compose up -d
+```
+
+**Desenvolvimento local:**
+```bash
+make dev
+```
+
+## 📚 API Documentation
+
+### Endpoints
+
+#### Autenticação
+```plaintext
+POST /api/v1/auth/login
+POST /api/v1/auth/register
+```
+
+#### VPN
+```plaintext
+GET    /api/v1/vpn/config
+POST   /api/v1/vpn/config
+GET    /api/v1/vpn/status
+```
+
+### Exemplo de Requisição
+
+```bash
+curl -X POST http://localhost:8080/api/v1/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"admin","password":"123456"}'
+```
+
+## 🧪 Testes
+
+Execute os testes unitários:
+```bash
+make test
+```
+
+Testes de integração:
+```bash
+make test-integration
+```
+
+## 📈 Monitoramento
+
+A API fornece endpoints de métricas e saúde:
+```plaintext
+GET /health
+GET /metrics
+```
+
+## 🔐 Segurança
+
+- ✅ Autenticação JWT
+- 🔒 HTTPS/TLS
+- 🛡️ Rate Limiting
+- 🔍 Logs de Auditoria
+
+## 🤝 Contribuição
+
+1. Fork o projeto
+2. Crie sua feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 📞 Suporte
+
+- 📧 Email: suporte@serpro.gov.br
+- 🐛 Issues: [GitHub Issues](https://github.com/seu-usuario/sar_api/issues)
+- 📚 Wiki: [Documentation](https://github.com/seu-usuario/sar_api/wiki)
+
+## 🏆 Badges
+
+![Go Version](https://img.shields.io/github/go-mod/go-version/seu-usuario/sar_api)
+![Build Status](https://img.shields.io/github/workflow/status/seu-usuario/sar_api/Go)
+![Coverage](https://img.shields.io/codecov/c/github/seu-usuario/sar_api)
+![License](https://img.shields.io/github/license/seu-usuario/sar_api)
