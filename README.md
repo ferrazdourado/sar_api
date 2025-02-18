@@ -4,6 +4,11 @@
   <img src="docs/images/logo.png" alt="Serpro SAR API Logo" width="200"/>
 </p>
 
+![Go Version](https://img.shields.io/github/go-mod/go-version/ferrazdourado/sar_api)
+![Build Status](https://img.shields.io/github/workflow/status/ferrazdourado/sar_api/Go)
+![Coverage](https://img.shields.io/codecov/c/github/ferrazdourado/sar_api)
+![License](https://img.shields.io/github/license/ferrazdourado/sar_api)
+
 ## 📋 Sobre o Projeto
 
 O Serpro SAR API é um sistema backend robusto desenvolvido em Go, projetado para gerenciar o sistema de acesso remoto do Serpro. Esta API RESTful oferece uma interface segura e escalável para gerenciamento de conexões VPN e autenticação de usuários.
@@ -20,8 +25,8 @@ O Serpro SAR API é um sistema backend robusto desenvolvido em Go, projetado par
 
 | Tecnologia | Versão | Descrição |
 |------------|---------|-----------|
-| Go | 1.23 | Linguagem principal |
-| Gin | v1.9.1 | Framework web |
+| Go | 1.22 | Linguagem principal |
+| Gin | v1.10.0 | Framework web |
 | MongoDB | 6.0 | Banco de dados |
 | JWT | - | Autenticação |
 | Docker | - | Containerização |
@@ -32,18 +37,22 @@ O Serpro SAR API é um sistema backend robusto desenvolvido em Go, projetado par
 sar_api/
 ├── cmd/
 │   └── api/
-│       └── main.go          # Ponto de entrada
+│       └── main.go         # Ponto de entrada
+├── config/                 # Configurações do banco de dados
+├── docker/
+│   ├── api/                # Arquivo docker do serviço
+│   └── mongodb/            # Arquivo docker do banco de dados
 ├── internal/
-│   ├── controllers/         # Handlers HTTP
-│   ├── middleware/          # Middlewares
+│   ├── controllers/        # Handlers HTTP
+│   ├── middleware/         # Middlewares
 │   ├── models/             # Estruturas de dados
 │   ├── repository/         # Camada de dados
-│   ├── routes/            # Definição de rotas
-│   └── services/          # Lógica de negócios
+│   ├── routes/             # Definição de rotas
+│   └── services/           # Lógica de negócios
 ├── pkg/
-│   ├── config/            # Configurações
-│   └── utils/             # Utilitários
-└── tests/                 # Testes
+│   ├── config/             # Configurações
+│   └── utils/              # Utilitários
+└── tests/                  # Testes
 ```
 
 ## 🛠️ Instalação
@@ -155,16 +164,3 @@ GET /metrics
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 📞 Suporte
-
-- 📧 Email: suporte@serpro.gov.br
-- 🐛 Issues: [GitHub Issues](https://github.com/ferrazdourado/sar_api/issues)
-- 📚 Wiki: [Documentation](https://github.com/ferrazdourado/sar_api/wiki)
-
-## 🏆 Badges
-
-![Go Version](https://img.shields.io/github/go-mod/go-version/ferrazdourado/sar_api)
-![Build Status](https://img.shields.io/github/workflow/status/ferrazdourado/sar_api/Go)
-![Coverage](https://img.shields.io/codecov/c/github/ferrazdourado/sar_api)
-![License](https://img.shields.io/github/license/ferrazdourado/sar_api)
