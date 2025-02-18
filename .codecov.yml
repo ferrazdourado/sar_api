@@ -1,0 +1,13 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 80%
+    patch:
+      default:
+        target: 80%
+
+ignore:
+  - "cmd/api/main.go"
+  - "**/*_test.go"
+  - "tests/**/*"

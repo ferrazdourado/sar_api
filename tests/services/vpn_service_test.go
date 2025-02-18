@@ -7,6 +7,7 @@ import (
     "github.com/stretchr/testify/mock"
     "github.com/ferrazdourado/sar_api/internal/models"
     "github.com/ferrazdourado/sar_api/internal/services"
+    "github.com/ferrazdourado/sar_api/pkg/config"
 )
 
 type MockUserRepository struct {

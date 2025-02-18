@@ -9,6 +9,11 @@
 ![Coverage](https://img.shields.io/codecov/c/github/ferrazdourado/sar_api)
 ![License](https://img.shields.io/github/license/ferrazdourado/sar_api)
 
+### Metas de Cobertura
+
+- 🎯 Meta global: 80% de cobertura
+- 📊 Cobertura atual: [![codecov](https://codecov.io/gh/ferrazdourado/sar_api/branch/main/graph/badge.svg)](https://codecov.io/gh/ferrazdourado/sar_api)
+
 ## 📋 Sobre o Projeto
 
 O Serpro SAR API é um sistema backend robusto desenvolvido em Go, projetado para gerenciar o sistema de acesso remoto do Serpro. Esta API RESTful oferece uma interface segura e escalável para gerenciamento de conexões VPN e autenticação de usuários.

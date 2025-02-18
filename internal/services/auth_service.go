@@ -14,6 +14,17 @@ type AuthService struct {
     userRepo interfaces.UserRepository
     config   *config.Config
 }
+var (
+    // Erros de autenticação
+    ErrInvalidCredentials = errors.New("credenciais inválidas")
+    ErrUserExists        = errors.New("usuário já existe")
+    ErrUserNotFound      = errors.New("usuário não encontrado")
+    
+    // Erros de VPN
+    ErrInvalidConfig     = errors.New("configuração VPN inválida")
+    ErrConfigNotFound    = errors.New("configuração VPN não encontrada")
+    ErrVPNConnection     = errors.New("erro na conexão VPN")
+)
 
 func NewAuthService(userRepo interfaces.UserRepository, cfg *config.Config) *AuthService {
     return &AuthService{
@@ -29,7 +40,7 @@ func (s *AuthService) Register(ctx context.Context, user *models.User) error {
         return err
     }
     if existingUser != nil {
-        return errors.New("usuário já existe")
+		return ErrUserExists
     }
 
     // Hash da senha
@@ -53,12 +64,13 @@ func (s *AuthService) Login(ctx context.Context, credentials models.LoginCredent
         return "", err
     }
     if user == nil {
-        return "", errors.New("usuário não encontrado")
+        return "", ErrUserNotFound
     }
 
+    // Verificar senha
     err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(credentials.Password))
     if err != nil {
-        return "", errors.New("senha inválida")
+        return "", ErrInvalidCredentials
     }
 
     // Criar claims com os dados do usuário
