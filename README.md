@@ -59,7 +59,7 @@ sar_api/
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/sar_api.git
+git clone https://github.com/ferrazdourado/sar_api.git
 cd sar_api
 ```
 
@@ -159,12 +159,12 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ## 📞 Suporte
 
 - 📧 Email: suporte@serpro.gov.br
-- 🐛 Issues: [GitHub Issues](https://github.com/seu-usuario/sar_api/issues)
-- 📚 Wiki: [Documentation](https://github.com/seu-usuario/sar_api/wiki)
+- 🐛 Issues: [GitHub Issues](https://github.com/ferrazdourado/sar_api/issues)
+- 📚 Wiki: [Documentation](https://github.com/ferrazdourado/sar_api/wiki)
 
 ## 🏆 Badges
 
-![Go Version](https://img.shields.io/github/go-mod/go-version/seu-usuario/sar_api)
-![Build Status](https://img.shields.io/github/workflow/status/seu-usuario/sar_api/Go)
-![Coverage](https://img.shields.io/codecov/c/github/seu-usuario/sar_api)
-![License](https://img.shields.io/github/license/seu-usuario/sar_api)
+![Go Version](https://img.shields.io/github/go-mod/go-version/ferrazdourado/sar_api)
+![Build Status](https://img.shields.io/github/workflow/status/ferrazdourado/sar_api/Go)
+![Coverage](https://img.shields.io/codecov/c/github/ferrazdourado/sar_api)
+![License](https://img.shields.io/github/license/ferrazdourado/sar_api)
