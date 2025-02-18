@@ -8,7 +8,7 @@ import (
 
     "github.com/gin-gonic/gin"
     "github.com/stretchr/testify/assert"
-    "github.com/ferrazdourad/sar_api/internal/controllers"
+    "github.com/ferrazdourado/sar_api/internal/controllers"
 )
 
 func TestGetVPNConfig(t *testing.T) {

@@ -18,7 +18,8 @@ func NewVPNController(service *services.VPNService) *VPNController {
 }
 
 func (c *VPNController) GetVPNConfig(ctx *gin.Context) {
-    config, err := c.vpnService.GetConfig()
+    id := ctx.Param("id")
+    config, err := c.vpnService.GetConfig(ctx.Request.Context(), id)
     if err != nil {
         ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
         return
@@ -33,7 +34,7 @@ func (c *VPNController) CreateVPNConfig(ctx *gin.Context) {
         return
     }
 
-    if err := c.vpnService.CreateConfig(&config); err != nil {
+    if err := c.vpnService.CreateConfig(ctx.Request.Context(), &config); err != nil {
         ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
         return
     }
@@ -42,7 +43,7 @@ func (c *VPNController) CreateVPNConfig(ctx *gin.Context) {
 }
 
 func (c *VPNController) GetVPNStatus(ctx *gin.Context) {
-    status, err := c.vpnService.GetStatus()
+    status, err := c.vpnService.GetStatus(ctx.Request.Context())
     if err != nil {
         ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
         return

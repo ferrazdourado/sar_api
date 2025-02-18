@@ -1,0 +1,17 @@
+server:
+  port: 8080
+  mode: "debug"
+  timeout: 30
+
+database:
+  uri: "mongodb://mongodb:27017"
+  database: "sar_db"
+
+jwt:
+  secret: "${JWT_SECRET}"
+  expires_in: 24
+  signing_key: "${JWT_SIGNING_KEY}"
+
+vpn:
+  config_dir: "/etc/openvpn"
+  log_dir: "/var/log/openvpn"

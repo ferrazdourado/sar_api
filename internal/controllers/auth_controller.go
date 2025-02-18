@@ -24,9 +24,9 @@ func (c *AuthController) Login(ctx *gin.Context) {
         return
     }
 
-    token, err := c.authService.Login(credentials)
+    token, err := c.authService.Login(ctx.Request.Context(), credentials)
     if err != nil {
-        ctx.JSON(http.StatusUnauthorized, gin.H{"error": "Credenciais inválidas"})
+        ctx.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
         return
     }
 
@@ -40,7 +40,7 @@ func (c *AuthController) Register(ctx *gin.Context) {
         return
     }
 
-    if err := c.authService.Register(&user); err != nil {
+    if err := c.authService.Register(ctx.Request.Context(), &user); err != nil {
         ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
         return
     }
